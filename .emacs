@@ -1,3 +1,9 @@
+;;; Emacs-Config --- Summary
+
+;;; Commentary:
+
+;;; Code:
+;; Custimization from emacs menu
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -27,13 +33,12 @@
 	      tab-width 4
 	      indent-tabs-mode t)
 (add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
-(defun my-indent-setup ()
-  (c-set-offset 'arglist-intro '+))
-(add-hook 'java-mode-hook 'my-indent-setup)
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
-;;(global-flycheck-mode)
-
 
 ;; CMake mode
+(require 'cmake-mode)
+
+(provide '.emacs)
+;;; .emacs ends here

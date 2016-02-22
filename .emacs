@@ -42,7 +42,11 @@
 
 
 ;; CMake mode
-(require 'cmake-mode)
+;;(setq load-path (cons (expand-file-name "~/.emacs/elpa/cmake-mode-20151012.726/") load-path))
+;;(require 'cmake-mode)
+(add-to-list 'auto-mode-alist '("CMakeLists.txt" . cmake-mode))
+(add-to-list 'auto-mode-alist '(".cmake" . cmake-mode))
+
 ;; ??? for understanding ====
 ;;(autoload 'cmake-project-mode "cmake-project" nil t)
 ;;(defun maybe-cmake-project-hook ()

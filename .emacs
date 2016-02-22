@@ -29,8 +29,8 @@
 
 ;; Indentation
 (setq-default c-default-style "linux"
-	      c-basic-offset 4
-	      tab-width 4
+	      c-basic-offset 2
+	      tab-width 2
 	      indent-tabs-mode t)
 (add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
 
@@ -43,6 +43,13 @@
 
 ;; CMake mode
 (require 'cmake-mode)
+;; ??? for understanding ====
+;;(autoload 'cmake-project-mode "cmake-project" nil t)
+;;(defun maybe-cmake-project-hook ()
+;;  (if (file-exists-p "CMakeLists.txt") (cmake-project-mode)))
+;;(add-hook 'c-mode-hook 'maybe-cmake-project-hook)
+;;(add-hook 'c++-mode-hook 'maybe-cmake-project-hook)
+
 
 (provide '.emacs)
 ;;; .emacs ends here

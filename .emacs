@@ -37,8 +37,8 @@
 ;; Flycheck
 ;;(require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(add-hook 'c++-mode-hook (lambda() (setq flycheck-gcc-language-standard "c++11")))
-(add-hook 'c++-mode-hook (lambda() (setq flycheck-gcc-include-path "/usr/local/include/boost")))
+(add-hook 'c++-mode-hook (lambda() (setq flycheck-gcc-language-standard "gnu++11")))
+;;(add-hook 'c++-mode-hook (lambda() (setq flycheck-gcc-include-path "/usr/local/include/boost")))
 
 
 ;; CMake mode

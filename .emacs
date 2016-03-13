@@ -19,7 +19,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "InputMono" :foundry "outline" :slant normal :weight normal :height 143 :width normal)))))
+ '(default ((t (:family "InputMono" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
 
 ;; Packages
 (require 'package)
@@ -54,6 +54,35 @@
 ;;(add-hook 'c-mode-hook 'maybe-cmake-project-hook)
 ;;(add-hook 'c++-mode-hook 'maybe-cmake-project-hook)
 
+;; ----------------------------------------------------------------
+;; Irony mode
+;; ----------------------------------------------------------------
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's asynchronous function
+(defun my-irony-mode-hook ()
+	(define-key irony-mode-map [remap completion-at-point]
+		'irony-completion-at-point-async)
+	(define-key irony-mode-map [remap complete-symbol]
+		'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+
+;; Company
+(eval-after-load 'company
+	'(add-to-list 'company-backends 'company-irony))
+
+(require 'company-irony-c-headers)
+;; Load with `irony-mode` as a grouped backend
+(eval-after-load 'company
+	'(add-to-list
+		'company-backends '(company-irony-c-headers company-irony)))
+
+;; Flycheck
+(eval-after-load 'flycheck
+	'(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
 (provide '.emacs)
 ;;; .emacs ends here

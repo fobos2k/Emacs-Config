@@ -82,15 +82,26 @@
 (eval-after-load 'company
 	'(add-to-list 'company-backends 'company-irony))
 
-(require 'company-irony-c-headers)
+;;(require 'company-irony-c-headers)
 ;; Load with `irony-mode` as a grouped backend
-(eval-after-load 'company
-	'(add-to-list
-		'company-backends '(company-irony-c-headers company-irony)))
+;;(eval-after-load 'company
+;;	'(add-to-list
+;;		'company-backends '(company-irony-c-headers company-irony)))
 
 ;; Flycheck
 (eval-after-load 'flycheck
 	'(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+
+;; Google C style
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
+;; Google translate
+;(require 'google-translate)
+;(require 'google-translate-default-ui)
+;(global-set-key "\C-ct" 'google-translate-at-point)
+;(global-set-key "\C-cT" 'google-translate-query-translate)
+
 
 (provide '.emacs)
 ;;; .emacs ends here

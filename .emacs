@@ -54,6 +54,14 @@
 ;;(add-hook 'c-mode-hook 'maybe-cmake-project-hook)
 ;;(add-hook 'c++-mode-hook 'maybe-cmake-project-hook)
 
+;; GMail
+;;(add-to-list 'gnus-secondary-select-methods '(nnimap "gmail"
+;;																										 (nnimap-address "imap.gmail.com")
+;;																										 (nnimap-server-port "imaps")
+;;																										 (nnimap-stream ssl)))
+;;(setq smtpmail-smtp-service 587
+;;			gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
+
 
 (provide '.emacs)
 ;;; .emacs ends here

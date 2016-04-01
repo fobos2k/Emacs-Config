@@ -102,6 +102,35 @@
 ;(global-set-key "\C-ct" 'google-translate-at-point)
 ;(global-set-key "\C-cT" 'google-translate-query-translate)
 
+;; ErgoEmacs
+;;(package-initialize)
+;;(require 'ergoemacs-mode)
+;;(setq ergoemacs-theme nil)
+;;(setq ergoemacs-keyboard-layout "us")
+;;(ergoemacs-mode 1)
+
+;; Auto complete
+;;(require 'auto-complete)
+;;(require 'auto-complete-c-headers)
+;;(add-to-list 'ac-sources 'ac-source-c-headers)
+
+;;(add-hook 'c-mode-hook
+;;					'(lambda ()
+;;						 (add-to-list 'ac-sources 'ac-source-headers)
+;;						 (add-to-list 'ac-sources 'ac-source-c-header-symbols t)))
+;;(add-hook 'c-mode-common-hook
+;;					'(lambda ()
+;;						 (add-to-list 'ac-omni-completion-sources
+;;													(cons "\\." '(ac-source-semantic)))
+;;						 (add-to-list 'ac-omni-completion-sources
+;;													(cons "->" '(ac-source-semantic)))
+;;						 (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
+;;))
+
+(add-to-list 'load-path "~/.emacs.d")    ; This may not be appeared if you have already added.
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
 
 (provide '.emacs)
 ;;; .emacs ends here

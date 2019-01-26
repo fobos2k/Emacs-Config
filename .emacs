@@ -6,6 +6,7 @@
 ;;; Install emms
 ;;; Install tomatinho
 ;;; Install frame-cmds
+;;; install dockerfile-mode
 
 
 ;;; Code:
@@ -45,9 +46,9 @@
 (elpy-enable)
 
 ;; EMMS
-(require 'emms-setup)
-(emms-standard)
-(emms-default-players)
+;; (require 'emms-setup)
+;; (emms-standard)
+;; (emms-default-players)
 
 ;; CMake Mode
 ; Add cmake listfile names to the mode list.

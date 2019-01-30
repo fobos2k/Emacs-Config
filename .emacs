@@ -7,7 +7,7 @@
 ;;; Install tomatinho
 ;;; Install frame-cmds
 ;;; install dockerfile-mode
-
+;;; Install blank-mode
 
 ;;; Code:
 ;;; Packages (only el-get!!!)
@@ -27,7 +27,6 @@
 	     '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
-
 ;; Autopair
 (require 'autopair)
 (autopair-global-mode)
@@ -37,15 +36,12 @@
 (ido-mode t)
 
 ;; C/C++ mode
-;; (add-hook 'c++-mode-hook 'irony-mode)
-;; (add-hook 'c-mode-hook 'irony-mode)
-;; (add-hook 'objc-mode-hook 'irony-mode)
-;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-
-;; (with-eval-after-load 'company
-;;   (add-to-list 'company-backends 'company-c-headers))
-
+(require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+(setq-default c-basic-offset 4
+              tab-width 4
+              indent-tabs-mode nil)
+(add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
 
 
 ;; Tomatinho

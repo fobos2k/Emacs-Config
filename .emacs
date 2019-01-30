@@ -36,6 +36,18 @@
 (require 'ido)
 (ido-mode t)
 
+;; C/C++ mode
+;; (add-hook 'c++-mode-hook 'irony-mode)
+;; (add-hook 'c-mode-hook 'irony-mode)
+;; (add-hook 'objc-mode-hook 'irony-mode)
+;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+;; (with-eval-after-load 'company
+;;   (add-to-list 'company-backends 'company-c-headers))
+
+(add-hook 'after-init-hook 'global-company-mode)
+
+
 ;; Tomatinho
 (require 'tomatinho)
 (global-set-key (kbd "<f12>") 'tomatinho)

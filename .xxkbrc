@@ -8,13 +8,13 @@ XXkb.mainwindow.enable: yes
 XXkb.mainwindow.label.enable: yes
 XXkb.mainwindow.type: tray
 XXkb.mainwindow.appicon: no
-XXkb.mainwindow.geometry: 24x24+0+0
+XXkb.mainwindow.geometry: 14x14+0+0
 XXkb.mainwindow.label.background: blue4
 XXkb.mainwindow.label.foreground: white
 XXkb.mainwindow.label.font: -misc-*-r-*-18-*
 XXkb.mainwindow.label.text.1: EN
-XXkb.mainwindow.label.text.2: HE
-XXkb.mainwindow.label.text.3: RU
+XXkb.mainwindow.label.text.2: RU
+XXkb.mainwindow.label.text.3: HE
 XXkb.controls.add_when_start: yes
 XXkb.controls.two_state: no
 XXkb.button.enable: no

@@ -22,9 +22,13 @@
       (eval-print-last-sexp))))
 (el-get 'sync)
 (add-to-list 'package-archives
-	     '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (add-to-list 'package-archives
-	     '("org" . "http://orgmode.org/elpa/") t)
+             '("org" . "http://orgmode.org/elpa/") t)
+
+; Manual install
+(add-to-list 'load-path "~/.emacs.d/manual-install")
+
 (package-initialize)
 
 ;; Autopair
@@ -42,9 +46,20 @@
               tab-width 4
               indent-tabs-mode nil)
 (add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
+;; (add-hook 'c-mode-common-hook 'google-set-c-style)
+
+;; Semantic mode
+(require 'cc-mode)
+(require 'semantic)
+
+(global-semanticdb-minor-mode 1)
+(global-semantic-idle-scheduler-mode 1)
+
+(semantic-mode 1)
 
 ;; Makefile mode
 (add-to-list 'auto-mode-alist '("\\make.inc\\'" . makefile-mode))
+(add-to-list 'auto-mode-alist '("\\Makefile.*\\'" . makefile-mode))
 
 ;; Tomatinho
 (require 'tomatinho)
@@ -53,7 +68,8 @@
 ;; ElPy
 (require 'elpy)
 (package-initialize)
-(elpy-enable)
+;; (elpy-enable)
+(add-hook 'python-mode-hook 'elpy-enable)
 
 ;; EMMS
 ;; (require 'emms-setup)
@@ -71,6 +87,11 @@
 (add-to-list 'load-path "~/.emacs.d/autoload/")
 (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
 (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
+
+;; Folding
+(if (require 'folding nil 'noerror)
+    (folding-mode-add-find-file-hook)
+  (message "Library `folding' not found"))
 
 ;; Customization
 ;; Key bindings

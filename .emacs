@@ -25,6 +25,8 @@
              '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (add-to-list 'package-archives
              '("org" . "http://orgmode.org/elpa/") t)
+;; (add-to-list 'package-archives
+;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 ; Manual install
 (add-to-list 'load-path "~/.emacs.d/manual-install")
@@ -67,9 +69,18 @@
 
 ;; ElPy
 (require 'elpy)
-(package-initialize)
 ;; (elpy-enable)
+(use-package elpy
+  :ensure t
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable))
 (add-hook 'python-mode-hook 'elpy-enable)
+
+;; SQL
+(require 'sql)
+(defalias 'sql-get-login 'ignore)
+
 
 ;; EMMS
 ;; (require 'emms-setup)
@@ -96,7 +107,8 @@
 ;; Customization
 ;; Key bindings
 (add-to-list 'custom-theme-load-path "~/.emacs.d/custom-themes")
-(load-theme 'calm-forest t)
+;; (load-theme 'calm-forest t)
+(load-theme 'dakrone t)
 
 ;; Key bindings
 ;; Shrink
@@ -118,18 +130,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(custom-safe-themes
-   (quote
-    ("f641bdb1b534a06baa5e05ffdb5039fb265fde2764fbfd9a90b0d23b75f3936b" default)))
  '(display-battery-mode t)
  '(display-time-24hr-format t)
  '(display-time-mode t)
- '(elpy-rpc-python-command "python")
  '(global-linum-mode t)
  '(inhibit-startup-screen t)
  '(initial-frame-alist (quote ((fullscreen . maximized))))
- '(package-selected-packages (quote (org-plus-contrib org)))
- '(python-shell-interpreter "ipython")
+ '(package-selected-packages (quote (spacemacs-theme csv-mode org-plus-contrib org)))
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -137,7 +144,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "NotoSansMono" :foundry "outline" :slant normal :weight normal :height 120 :width normal))))
+ '(default ((t (:family "FiraCode" :foundry "outline" :slant normal :weight normal :height 120 :width normal))))
  '(tomatinho-reset-face ((t (:foreground "#333333"))))
  '(tomatinho-time-face ((t (:height 4.0 :width normal :family "Input")))))
 

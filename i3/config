@@ -184,3 +184,19 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+exec --no-startup-id nm-applet &
+exec teams &
+exec slack &
+exec flameshot &
+exec pkill xxkb; xxkb &
+# exec xscreensaver -nosplash &
+exec synology-drive &
+
+# Applications
+bindsym $mod+m exec "emacs"
+bindsym $mod+c exec "brave-browser"
+# bindsym $mod+c exec "chromium-browser"
+
+# Lock screen
+bindsym $mod+Shift+x exec --no-startup-id "i3lock.sh ${HOME}/wallpapers"

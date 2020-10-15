@@ -25,8 +25,8 @@
              '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (add-to-list 'package-archives
              '("org" . "http://orgmode.org/elpa/") t)
-;; (add-to-list 'package-archives
-;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
 
 ; Manual install
 (add-to-list 'load-path "~/.emacs.d/manual-install")
@@ -60,8 +60,10 @@
 (semantic-mode 1)
 
 ;; Makefile mode
+(add-to-list 'auto-mode-alist '("\\*.mk\\'" . makefile-mode))
 (add-to-list 'auto-mode-alist '("\\make.inc\\'" . makefile-mode))
 (add-to-list 'auto-mode-alist '("\\Makefile.*\\'" . makefile-mode))
+(setq-default indent-tabs-mode nil)
 
 ;; Tomatinho
 (require 'tomatinho)
@@ -76,6 +78,12 @@
   :init
   (advice-add 'python-mode :before 'elpy-enable))
 (add-hook 'python-mode-hook 'elpy-enable)
+
+;; Bitbake
+(setq auto-mode-alist
+	  (append
+	   '(("\\.bb\\'" . bitbake-mode))
+	   auto-mode-alist))
 
 ;; SQL
 (require 'sql)
@@ -98,17 +106,20 @@
 (add-to-list 'load-path "~/.emacs.d/autoload/")
 (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
 (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
+(setq cmake-tab-width 4)
 
 ;; Folding
 (if (require 'folding nil 'noerror)
     (folding-mode-add-find-file-hook)
   (message "Library `folding' not found"))
 
-;; Customization
-;; Key bindings
+;; Customization (themes)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/custom-themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/custom-themes/alect-themes")
+(add-to-list 'load-path "~/.emacs.d/custom-themes/alect-themes")
 ;; (load-theme 'calm-forest t)
-(load-theme 'dakrone t)
+;; (load-theme 'dakrone t)
+(load-theme 'alect-black t)
 
 ;; Key bindings
 ;; Shrink
@@ -136,7 +147,9 @@
  '(global-linum-mode t)
  '(inhibit-startup-screen t)
  '(initial-frame-alist (quote ((fullscreen . maximized))))
- '(package-selected-packages (quote (spacemacs-theme csv-mode org-plus-contrib org)))
+ '(package-selected-packages
+   (quote
+    (bitbake mmm-mode dash elpy spacemacs-theme csv-mode org-plus-contrib org)))
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
